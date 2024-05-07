@@ -35,8 +35,8 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
-                implementation("androidx.startup:startup-runtime:1.1.1")
-                implementation("androidx.browser:browser:1.8.0")
+                implementation(libs.startup.runtime)
+                implementation(libs.browser)
             }
         }
         val iosMain by getting {
@@ -66,7 +66,7 @@ mavenPublishing {
         name.set("Web Browser KMP")
         description.set("Library used to open up a web browser on both Android/iOS.")
         inceptionYear.set("2024")
-        url.set("https://github.com/stevdza-san/WebBrowserKMP")
+        url.set("https://github.com/stevdza-san/WebBrowser-KMP")
 
         licenses {
             license {
@@ -86,7 +86,7 @@ mavenPublishing {
 
         // Specify SCM information
         scm {
-            url.set("https://github.com/stevdza-san/WebBrowserKMP")
+            url.set("https://github.com/stevdza-san/WebBrowser-KMP")
         }
     }
 
