@@ -3,7 +3,7 @@
 </p><br>
 
 <p align="center">
-  <a href="https://central.sonatype.com/artifact/com.stevdza-san/browser-kmp"><img alt="Profile" src="https://badgen.net/badge/Maven Central/v1.0.3/blue?icon=github"/></a>
+  <a href="https://central.sonatype.com/artifact/com.stevdza-san/browser-kmp"><img alt="Profile" src="https://badgen.net/badge/Maven Central/v1.0.4/blue?icon=github"/></a>
 </p>
 <p align="center">
 A simple KMP library that allows you to launch a Web Browser on both Android/iOS.
@@ -15,7 +15,7 @@ A simple KMP library that allows you to launch a Web Browser on both Android/iOS
 You can add a dependency inside the `commonMain` source set:
 ```gradle
 commonMain.dependencies {
-    implementation("com.stevdza-san:browser-kmp:1.0.3")
+    implementation("com.stevdza-san:browser-kmp:1.0.4")
 }
 ```
 ## Usage
