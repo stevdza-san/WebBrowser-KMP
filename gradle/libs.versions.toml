@@ -1,15 +1,13 @@
 [versions]
-agp = "8.0.2"
+agp = "8.5.2"
 browser = "1.8.0"
-kotlin = "1.9.23"
-nexus-publish = "2.0.0-rc-1"
+kotlin = "2.0.21"
 android-minSdk = "24"
 android-compileSdk = "34"
-startupRuntime = "1.1.1"
+startupRuntime = "1.2.0"
 
 [libraries]
 browser = { module = "androidx.browser:browser", version.ref = "browser" }
-nexus-publish = { module = "io.github.gradle-nexus.publish-plugin:io.github.gradle-nexus.publish-plugin.gradle.plugin", version.ref = "nexus-publish" }
 startup-runtime = { module = "androidx.startup:startup-runtime", version.ref = "startupRuntime" }
 
 [plugins]
