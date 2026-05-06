@@ -1,21 +1,18 @@
-import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
-    id("com.vanniktech.maven.publish") version "0.30.0"
+    id("com.vanniktech.maven.publish") version "0.36.0"
 }
 
 kotlin {
     @OptIn(ExperimentalKotlinGradlePluginApi::class)
-    targetHierarchy.default()
     androidTarget {
         publishLibraryVariants("release")
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "11"
-            }
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_17)
         }
         publishLibraryVariants("release", "debug")
     }
@@ -31,33 +28,25 @@ kotlin {
     }
 
     sourceSets {
-        val commonMain by getting {
-            dependencies {
-            }
+        commonMain.dependencies {}
+        androidMain.dependencies {
+            implementation(libs.startup.runtime)
+            implementation(libs.browser)
         }
-        val androidMain by getting {
-            dependencies {
-                implementation(libs.startup.runtime)
-                implementation(libs.browser)
-            }
-        }
-        val iosMain by getting {
-            dependencies {
-            }
-        }
+        iosMain.dependencies {}
     }
 }
 
 android {
-    namespace = "com.stevdza_san"
+    namespace = "com.stevdza_san.webbrowserkmp"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }
 
@@ -65,7 +54,7 @@ mavenPublishing {
     coordinates(
         groupId = "com.stevdza-san",
         artifactId = "browser-kmp",
-        version = "1.0.4"
+        version = "1.0.5"
     )
 
     // Configure POM metadata for the published artifact
@@ -98,7 +87,7 @@ mavenPublishing {
     }
 
     // Configure publishing to Maven Central
-    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+    publishToMavenCentral()
 
     // Enable GPG signing for all publications
     signAllPublications()
